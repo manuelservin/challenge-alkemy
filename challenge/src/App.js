@@ -1,5 +1,13 @@
+import { Provider } from "react-redux";
+import { store } from "./redux/store/store";
+import AppRouter from "./routers/AppRouter";
+
 function App() {
-  return <div className="App">hola de nuevo</div>;
+  return (
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  );
 }
 
 export default App;
