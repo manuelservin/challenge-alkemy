@@ -7,6 +7,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Login from "../screens/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/auth";
+import DashboardRoutes from "./DashboardRoutes";
 
 const AppRouter = () => {
   const { token } = useSelector((state) => state.auth);
@@ -33,7 +34,7 @@ const AppRouter = () => {
           path="/*"
           element={
             <PrivateRoutes>
-              <Home />
+              <DashboardRoutes />
             </PrivateRoutes>
           }
         />

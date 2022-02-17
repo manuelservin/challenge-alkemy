@@ -1,8 +1,9 @@
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const PublicRoutes = ({ children }) => {
-  const user = false;
-  return user.logged ? <Navigate to="/marvel" /> : children;
+  const { token } = useSelector((state) => state.auth);
+  return token ? <Navigate to="/" /> : children;
 };
 
 export default PublicRoutes;

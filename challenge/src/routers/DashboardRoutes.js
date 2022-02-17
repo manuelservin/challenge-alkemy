@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Routes, Route } from "react-router-dom";
+import Detail from "../screens/Detail";
+
 import Home from "../screens/Home";
 import Search from "../screens/Search";
 
@@ -9,8 +11,8 @@ const DashboardRoutes = () => {
     <div className="container">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        {/* <Route path="dish/:id" element={<DishItem />} /> */}
+        <Route path="search" element={<Search />} />
+        <Route path="search/:id" element={<Detail />} />
       </Routes>
     </div>
   );
