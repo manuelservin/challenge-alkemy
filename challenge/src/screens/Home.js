@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DishList from "../components/DishList";
-import { getAverage, getTotal } from "../helpers/helpers";
+import { getAverage, getTotal, validateMenu } from "../helpers/helpers";
 
 const Home = () => {
   const { dishes } = useSelector((state) => state.dishes);
@@ -11,18 +11,16 @@ const Home = () => {
   const [price, setPrice] = useState(0);
   const [healthScore, setHealthScore] = useState(0);
   const [time, setTime] = useState(0);
-
-  let priceArr = dishes.map((dish) => dish.pricePerServing);
-  let healthScoreArr = dishes.map((dish) => dish.healthScore);
-  let timeArr = dishes.map((dish) => dish.readyInMinutes);
+  const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
-    setPrice(getTotal(priceArr));
+    setPrice(getTotal(dishes, "pricePerServing"));
     if (dishes.length > 0) {
-      setTime(getAverage(timeArr));
-      setHealthScore(getAverage(healthScoreArr));
+      setTime(getAverage(dishes, "readyInMinutes"));
+      setHealthScore(getAverage(dishes, "healthScore"));
+      setIsValid(validateMenu(dishes));
     }
-  }, [dishes, priceArr, healthScoreArr, timeArr]);
+  }, [dishes]);
 
   return (
     <div>
@@ -31,10 +29,15 @@ const Home = () => {
       <Link to="/search">Search</Link>
       <h3>Menú</h3>
       <hr />
+      {!isValid && <span>Debe haber por lo menos dos platos veganos </span>}
       <DishList />
-      <span>total price: ${price}</span>
-      <span> ready in: {time} minutes</span>
-      <span> healthScore: {healthScore}</span>
+      {dishes && dishes.length !== 0 && (
+        <div>
+          <span>total price: ${price}</span>
+          <span> ready in: {time} minutes</span>
+          <span> healthScore: {healthScore}</span>
+        </div>
+      )}
     </div>
   );
 };
