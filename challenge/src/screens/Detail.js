@@ -6,7 +6,7 @@ const Detail = () => {
   const { id } = useParams();
   const [dish, setDish] = useState();
   useEffect(() => {
-    setDish(getDishById(id));
+    getDishById(id).then((value) => setDish(value));
   }, [id]);
   console.log(dish);
   return (
@@ -14,7 +14,7 @@ const Detail = () => {
       <div className="col col-xxl">
         {dish && (
           <div className="card">
-            <img src="hjhjk.jpg" className="card-img-top" alt="card-img-top" />
+            <img src={dish.image} className="card-img-top" alt="card-img-top" />
             <div className="card-body">
               <h5 className="card-title">klklkl</h5>
               <p className="card-text">DishTypes:</p>

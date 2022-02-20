@@ -24,12 +24,21 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home Screen</h1>
-      <hr />
-      <Link to="/search">Search</Link>
       <h3>Menú</h3>
       <hr />
+      <div className="row justify-content-center">
+        <Link className="btn btn-outline-info" to="/search">
+          Search a Dish
+        </Link>
+      </div>
+
       {!isValid && <span>Debe haber por lo menos dos platos veganos </span>}
+      {dishes.length === 0 && (
+        <div className="alert alert-info mt-5 text-align-center">
+          The Menu is empty
+        </div>
+      )}
+
       <DishList />
       {dishes && dishes.length !== 0 && (
         <div>

@@ -11,6 +11,8 @@ const DishItem = ({
   readyInMinutes,
   servings,
   vegan,
+  addToMenu,
+  dish,
 }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
@@ -18,7 +20,7 @@ const DishItem = ({
     dispatch(deleteDish(id));
   };
   return (
-    <div className="col-sm-3">
+    <div className="col-sm">
       <div className="card">
         <img src={image} className="card-img-top" alt={title} />
         <div className="card-body">
@@ -28,12 +30,28 @@ const DishItem = ({
             Ready in: {readyInMinutes} minutes servings: {servings}
             {vegan ? "Vegan" : "Not Vegan"}
           </p>
-          <Link to={`/search/${id}`} className="btn btn-primary">
-            See More
-          </Link>
-          <button onClick={handleDelete} className="btn btn-primary">
-            Delete
-          </button>
+          {dish ? (
+            <Link to={`/search/${dish.id}`} className="btn btn-primary">
+              See More
+            </Link>
+          ) : (
+            <Link to={`/search/${id}`} className="btn btn-primary">
+              See More
+            </Link>
+          )}
+
+          {addToMenu ? (
+            <button
+              onClick={() => addToMenu(id, dish)}
+              className="btn btn-primary"
+            >
+              add
+            </button>
+          ) : (
+            <button onClick={handleDelete} className="btn btn-primary">
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </div>

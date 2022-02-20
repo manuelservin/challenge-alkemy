@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import DishItem from "../components/DishItem";
 import SearchForm from "../components/SearchForm";
 import { addNewDish } from "../redux/actions/dish";
 
@@ -11,25 +12,20 @@ const Search = () => {
     dispatch(addNewDish(id, dish));
   };
   return (
-    <div className="row">
-      <SearchForm setResults={setResults} />
+    <div className="container">
+      <div className="row justify-content-center">
+        <SearchForm setResults={setResults} />
+      </div>
 
-      <div>
-        <h4>resultados</h4>
-        <hr />
+      <div className="row rows-cols-1 row-cols-md-3 g-3 mt-5">
         {results &&
           results.map((dish) => (
-            <div
-              style={{ cursor: "pointer" }}
-              onClick={() => handleClick(dish.id, dish)}
-            >
-              <img
-                src={dish.image}
-                alt={dish.title}
-                style={{ height: "80px" }}
-              />
-              <span key={dish.id}> {dish.title}</span>
-            </div>
+            <DishItem
+              key={dish.id}
+              {...dish}
+              addToMenu={handleClick}
+              dish={dish}
+            />
           ))}
       </div>
     </div>
