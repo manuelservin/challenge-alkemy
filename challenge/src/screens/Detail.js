@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDishById } from "../helpers/helpers";
 
 const Detail = () => {
   const { id } = useParams();
   const [dish, setDish] = useState();
+  const navigate = useNavigate();
+  const handleReturn = () => {
+    navigate(-1);
+  };
   useEffect(() => {
     getDishById(id).then((value) => setDish(value));
   }, [id]);
@@ -24,6 +28,9 @@ const Detail = () => {
             </div>
           </div>
         )}
+        <button className="btn btn-outline-info" onClick={handleReturn}>
+          Return
+        </button>
       </div>
     </div>
   );

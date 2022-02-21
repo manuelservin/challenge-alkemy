@@ -1,9 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import axios from "axios";
-import Swal from "sweetalert2";
 
-const SearchForm = ({ setResults }) => {
+import Swal from "sweetalert2";
+import { searchDish } from "../helpers/helpers";
+import { useDispatch } from "react-redux";
+import { searchUpdate } from "../redux/actions/search";
+import { finishLoading, startLoading } from "../redux/actions/ui";
+
+const SearchForm = ({}) => {
+  const dispatch = useDispatch();
   return (
     <div>
       <h5>search Form</h5>
@@ -20,11 +25,12 @@ const SearchForm = ({ setResults }) => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           const { dish } = values;
-          axios
-            .get(
-              `https://api.spoonacular.com/recipes/complexSearch?query=${dish}&addRecipeInformation=true&apiKey=${process.env.REACT_APP_API_KEY}`
-            )
-            .then((res) => setResults(res.data.results))
+          dispatch(startLoading());
+          searchDish(dish)
+            .then((res) => {
+              dispatch(searchUpdate(res));
+              dispatch(finishLoading());
+            })
             .catch((err) => Swal.fire("Error!", err, "error"));
           setSubmitting(false);
         }}

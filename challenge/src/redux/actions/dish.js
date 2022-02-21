@@ -8,10 +8,6 @@ export const addNewDish = (id, dish) => ({
   },
 });
 
-export const startloadDishes = () => {
-  return (dispatch) => {};
-};
-
 export const loadDishes = (dishes) => ({ type: types.load, payload: dishes });
 
 export const deleteDish = (id) => ({

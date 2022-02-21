@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const getDishById = async (id) => {
   const response = await axios.get(
@@ -38,4 +39,17 @@ export const validateMenu = (dishes) => {
     return false;
   }
   return true;
+};
+
+export const searchDish = async (dish) => {
+  const response = await axios
+    .get(
+      `https://api.spoonacular.com/recipes/complexSearch?query=${dish}&addRecipeInformation=true&apiKey=${process.env.REACT_APP_API_KEY}`
+    )
+    .then((res) => {
+      return res.data.results;
+    })
+    .catch((err) => Swal.fire("Error!", err, "error"));
+  console.log(response);
+  return response;
 };
