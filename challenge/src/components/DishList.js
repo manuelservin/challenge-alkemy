@@ -4,10 +4,15 @@ import DishItem from "./DishItem";
 
 const DishList = () => {
   const { dishes } = useSelector((state) => state.dishes);
-  console.log(dishes);
+
   return (
-    <div className="row rows-cols-1 row-cols-md-3 g-3">
-      {dishes && dishes.map((dish) => <DishItem key={dish.id} {...dish} />)}
+    <div className=" my-5 row row-cols-1 list">
+      {dishes &&
+        dishes.map((dish) => (
+          <div className="big">
+            <DishItem key={dish.id} {...dish} />
+          </div>
+        ))}
     </div>
   );
 };

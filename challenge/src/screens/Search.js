@@ -13,7 +13,7 @@ const Search = () => {
     dispatch(addNewDish(id, dish));
   };
   return (
-    <div className="container">
+    <>
       <div className="row justify-content-center">
         <SearchForm />
       </div>
@@ -22,19 +22,21 @@ const Search = () => {
           <h3 className="text-align-center">Loading....</h3>
         </div>
       ) : (
-        <div className="row rows-cols-1 row-cols-md-3 g-3 mt-5">
+        <div className="my-5 row  list justify-content-center">
           {lastSearch &&
             lastSearch.map((dish) => (
-              <DishItem
-                key={dish.id}
-                {...dish}
-                addToMenu={handleClick}
-                dish={dish}
-              />
+              <div className="small ">
+                <DishItem
+                  key={dish.id}
+                  {...dish}
+                  addToMenu={handleClick}
+                  dish={dish}
+                />
+              </div>
             ))}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

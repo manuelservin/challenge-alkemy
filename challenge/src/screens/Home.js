@@ -23,7 +23,7 @@ const Home = () => {
   }, [dishes]);
 
   return (
-    <div>
+    <>
       <h3>Menú</h3>
       <hr />
       <div className="row justify-content-center">
@@ -40,6 +40,7 @@ const Home = () => {
       )}
 
       <DishList />
+
       {dishes && dishes.length !== 0 && (
         <div>
           <span>total price: ${price}</span>
@@ -47,7 +48,7 @@ const Home = () => {
           <span> healthScore: {healthScore}</span>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
