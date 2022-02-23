@@ -31,7 +31,7 @@ const SearchForm = ({}) => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="  form ">
+          <Form className="  search-form ">
             <div className="input-group">
               <Field
                 name="dish"

@@ -48,6 +48,7 @@ code {
 .recipe {
   border: 2px solid #f2f2f2;
   border-radius: 8px;
+  box-shadow: 7px 7px 19px 4px rgba(0, 0, 0, 0.78);
   overflow: hidden;
 }
 .recipe-content {
@@ -126,7 +127,7 @@ code {
 
 /* SearchForm*/
 
-.form {
+.search-form {
   width: 65%;
   min-width: 290px;
 
@@ -156,11 +157,11 @@ code {
 /*  STYLES FOR LOGIN FORM*/
 
 .form {
-  width: 50%;
-
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 7px 7px 19px 4px rgba(0, 0, 0, 0.78);
+  width: 55vw;
+  max-width: 500px;
 }
 
 .form-title {

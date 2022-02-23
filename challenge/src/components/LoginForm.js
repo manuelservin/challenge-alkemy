@@ -2,10 +2,11 @@ import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { startLogin } from "../redux/actions/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.ui);
   return (
     <div>
       <Formik
@@ -23,36 +24,48 @@ const LoginForm = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="form col">
-            <h5 className="form-title">LoginForm</h5>
-            <div className="form-content">
-              <div className="form-field mb-2">
-                <Field name="email" type="text" placeHolder="Email" />
-                <ErrorMessage name="email" className="error" component="div" />
+          <>
+            {loading ? (
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
               </div>
-              <div className="form-field mt-3">
-                <Field
-                  name="password"
-                  type="password"
-                  placeHolder="Password.."
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="error"
-                />
-              </div>
+            ) : (
+              <Form className="form col">
+                <h5 className="form-title">Login</h5>
+                <div className="form-content">
+                  <div className="form-field mb-2">
+                    <Field name="email" type="text" placeHolder="Email" />
+                    <ErrorMessage
+                      name="email"
+                      className="error"
+                      component="div"
+                    />
+                  </div>
+                  <div className="form-field mt-3">
+                    <Field
+                      name="password"
+                      type="password"
+                      placeHolder="Password.."
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
 
-              <button
-                type="submit"
-                style={{ width: "100%" }}
-                className=" btn orange mt-3 mb-5"
-                disabled={isSubmitting}
-              >
-                Submit
-              </button>
-            </div>
-          </Form>
+                  <button
+                    type="submit"
+                    style={{ width: "100%" }}
+                    className=" btn orange mt-3 mb-5"
+                    disabled={isSubmitting}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </Form>
+            )}
+          </>
         )}
       </Formik>
     </div>

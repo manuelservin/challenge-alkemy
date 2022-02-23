@@ -44,6 +44,8 @@ const Home = () => {
 
   return (
     <div className="container">
+      <h1>Menu</h1>
+      <hr />
       <div className="row justify-content-center">
         <Link className="btn btn-lg outline-color mt-4" to="/search">
           Search a Dish
