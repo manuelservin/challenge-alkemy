@@ -44,8 +44,10 @@ code {
   overflow: hidden;
 }
 .recipe-content {
-  padding: 16px 32px;
+  border: 1px solid red;
+  padding: 10px 18px 10px 18px;
   flex: 4 1 40ch;
+  min-height: 240;
 }
 .recipe-tags {
   margin: 0 -8px;
@@ -61,8 +63,15 @@ code {
 }
 
 .recipe-title {
+  border: 1px solid red;
   margin: 0;
-  font-size: clamp(1.4em, 2.1vw, 2.1em);
+  width: 100%;
+  min-height: 75px;
+  text-align: center;
+  display: grid;
+  align-items: center;
+
+  font-size: clamp(1.1em, 1.4vw, 1.6em);
   font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
 }
 
@@ -71,5 +80,5 @@ code {
   padding: 24px;
 }
 .small {
-  width: clamp(200px, 60%, 280px);
+  width: clamp(200px, 60%, 315px);
 }

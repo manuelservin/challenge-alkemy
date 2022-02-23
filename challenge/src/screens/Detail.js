@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     getDishById(id).then((value) => setDish(value));
   }, [id]);
-  console.log(dish);
+  console.table(dish);
   return (
     <div className="row">
       <div className="col col-xxl">

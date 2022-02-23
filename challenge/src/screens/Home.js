@@ -1,26 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import DishList from "../components/DishList";
-import { getAverage, getTotal, validateMenu } from "../helpers/helpers";
+import { getAverage, getTotal } from "../helpers/helpers";
 
 const Home = () => {
   const { dishes } = useSelector((state) => state.dishes);
-  console.log(dishes.length);
 
   const [price, setPrice] = useState(0);
   const [healthScore, setHealthScore] = useState(0);
   const [time, setTime] = useState(0);
-  const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
     setPrice(getTotal(dishes, "pricePerServing"));
     if (dishes.length > 0) {
       setTime(getAverage(dishes, "readyInMinutes"));
       setHealthScore(getAverage(dishes, "healthScore"));
-      setIsValid(validateMenu(dishes));
     }
   }, [dishes]);
+
+  const handleClick = () => {
+    console.log("open");
+    Swal.fire({
+      title: "<strong> Resume:</strong>",
+      icon: "info",
+      html: ` <p> Price:  ${price} <p> 
+     <p> Ready In: ${time} <p> 
+     <p> Health Score:  ${healthScore} <p> 
+     
+     `,
+      showCloseButton: true,
+
+      focusConfirm: false,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+      confirmButtonAriaLabel: "Thumbs up, great!",
+    });
+  };
 
   return (
     <>
@@ -31,21 +47,15 @@ const Home = () => {
           Search a Dish
         </Link>
       </div>
-
-      {!isValid && <span>Debe haber por lo menos dos platos veganos </span>}
       {dishes.length === 0 && (
-        <div className="alert alert-info mt-5 text-align-center">
-          The Menu is empty
-        </div>
+        <div className="alert alert-info mt-5 ">The Menu is empty</div>
       )}
 
       <DishList />
 
       {dishes && dishes.length !== 0 && (
-        <div>
-          <span>total price: ${price}</span>
-          <span> ready in: {time} minutes</span>
-          <span> healthScore: {healthScore}</span>
+        <div className="alert alert-info" onClick={handleClick}>
+          <p className="text-align-center">Resume</p>
         </div>
       )}
     </>

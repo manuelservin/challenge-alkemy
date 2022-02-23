@@ -25,7 +25,7 @@ export const startLogin = (data) => {
 export const login = (token) => ({
   type: types.login,
   payload: {
-    //estos vienen de la respuesta de firebase user credentials
     token,
   },
 });
+export const logout = () => localStorage.removeItem("token");

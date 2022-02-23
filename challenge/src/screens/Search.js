@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DishItem from "../components/DishItem";
 import SearchForm from "../components/SearchForm";
-import { addNewDish } from "../redux/actions/dish";
+
+import { validateDish } from "../redux/actions/dish";
 
 const Search = () => {
   const { lastSearch } = useSelector((state) => state.search);
@@ -10,13 +11,15 @@ const Search = () => {
 
   const dispatch = useDispatch();
   const handleClick = (id, dish) => {
-    dispatch(addNewDish(id, dish));
+    dispatch(validateDish(id, dish));
   };
+
   return (
     <>
       <div className="row justify-content-center">
         <SearchForm />
       </div>
+
       {loading ? (
         <div className="row justify-content-center">
           <h3 className="text-align-center">Loading....</h3>
@@ -41,3 +44,39 @@ const Search = () => {
 };
 
 export default Search;
+
+/*
+import { useState } from "react";
+
+export default function usePromedio(menu) {
+    const [promedio, setPromedio] = useState({})
+
+    const totalPrice = () => {
+        return menu.map(platos => platos.pricePerServing)
+        .reduce((a,b) => a + b, 0);
+    }
+
+    const promedioHealthScore = () => {
+        return menu.map(platos => platos.healthScore)
+        .reduce((a,b) => a + b, 0);
+    }
+
+    const promedioTiempo = () => {
+        return menu.map(platos => platos.readyInMinutes)
+        .reduce((a,b) => a + b, 0);
+    }
+
+    const crearPromedio = () => setPromedio(
+        {
+            precio: totalPrice(),
+            puntos: promedioHealthScore(),
+            tiempo: promedioTiempo()
+        }
+    );
+
+    return{
+        promedio,
+        crearPromedio
+    }
+}
+*/

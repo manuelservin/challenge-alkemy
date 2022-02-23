@@ -11,12 +11,12 @@ const DishItem = ({
   readyInMinutes,
   servings,
   vegan,
+
   addToMenu,
   dish,
 }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    // console.log(id);
     dispatch(deleteDish(id));
   };
   return (
@@ -26,23 +26,19 @@ const DishItem = ({
           <img src={image} alt={title} />
         </div>
         <div class="recipe-content">
-          <p class="recipe-tags">
-            <span class="recipe-tag">Gluten Free</span>
-            <span class="recipe-tag">Main dish</span>
-          </p>
+          {/* <p class="recipe-tags">
+            {diets &&
+              diets.map((dish) => <span class="recipe-tag">{dish}</span>)}
+          </p> */}
 
           <h1 class="recipe-title">{title}</h1>
 
-          <p class="recipe-desc">
-            It really is possible to make excellent gluten free pizza at home in
-            your own oven with our recipes and techniques.
-          </p>
-          <p className="card-text">
+          <p className="card-text mt-4">
             HealthScore: {healthScore}
             Ready in: {readyInMinutes} minutes servings: {servings}
             {vegan ? "Vegan" : "Not Vegan"}
           </p>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center align-items-end ">
             {dish ? (
               <Link to={`/search/${dish.id}`} className="btn btn-primary mx-2">
                 See More

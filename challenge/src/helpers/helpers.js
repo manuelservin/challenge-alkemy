@@ -26,21 +26,6 @@ export const getAverage = (array, value) => {
   return total.toFixed();
 };
 
-// recibo el arreglo de platos, quiero extraer la propiedad vegan si el menu tiene menos de dos platos veganos retorno un error
-export const validateMenu = (dishes) => {
-  if (dishes.length === 0) return;
-  let vegan = [];
-  for (let dish of dishes) {
-    if (dish.vegan) {
-      vegan.push(dish);
-    }
-  }
-  if (dishes.length === 4 && vegan.length < 2) {
-    return false;
-  }
-  return true;
-};
-
 export const searchDish = async (dish) => {
   const response = await axios
     .get(
