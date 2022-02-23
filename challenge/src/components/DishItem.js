@@ -3,6 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteDish } from "../redux/actions/dish";
 
+import { DollarCircle } from "@styled-icons/boxicons-regular/DollarCircle";
+import { Bowl } from "@styled-icons/entypo/Bowl";
+import { Timer } from "@styled-icons/fluentui-system-regular/Timer";
+
+import { HealthBook } from "@styled-icons/remix-fill/HealthBook";
+
 const DishItem = ({
   id,
   title,
@@ -11,7 +17,9 @@ const DishItem = ({
   readyInMinutes,
   servings,
   vegan,
-
+  pricePerServing,
+  vegetarian,
+  glutenFree,
   addToMenu,
   dish,
 }) => {
@@ -27,24 +35,43 @@ const DishItem = ({
         </div>
         <div class="recipe-content">
           {/* <p class="recipe-tags">
-            {diets &&
-              diets.map((dish) => <span class="recipe-tag">{dish}</span>)}
+            
           </p> */}
+          <p className="recipe-tags">
+            {vegan && <span class="recipe-tag">Vegan</span>}
+            {vegetarian && <span class="recipe-tag">Vegetarian</span>}
+            {glutenFree && <span class="recipe-tag">Gluten free</span>}
+          </p>
 
           <h1 class="recipe-title">{title}</h1>
+          <div className="info my-4">
+            <span className="info-text">
+              <HealthBook className="icon" height={25} />
+              {healthScore}
+            </span>
 
-          <p className="card-text mt-4">
-            HealthScore: {healthScore}
-            Ready in: {readyInMinutes} minutes servings: {servings}
-            {vegan ? "Vegan" : "Not Vegan"}
-          </p>
+            <span className="info-text">
+              <Timer className="icon" height={25} />
+              {readyInMinutes}
+            </span>
+            <span className="info-text">
+              <Bowl className="icon" height={25} />
+              {servings}
+            </span>
+            <span className="info-text">
+              <DollarCircle className="icon" height={25} />
+              {pricePerServing}
+            </span>
+            {/* {vegan ? "Vegan" : "Not Vegan"} */}
+          </div>
+
           <div className="row justify-content-center align-items-end ">
             {dish ? (
-              <Link to={`/search/${dish.id}`} className="btn btn-primary mx-2">
+              <Link to={`/search/${dish.id}`} className="btn  mx-2 orange">
                 See More
               </Link>
             ) : (
-              <Link to={`/search/${id}`} className="btn btn-primary mx-2">
+              <Link to={`/search/${id}`} className="btn  mx-2 orange">
                 See More
               </Link>
             )}
@@ -52,12 +79,12 @@ const DishItem = ({
             {addToMenu ? (
               <button
                 onClick={() => addToMenu(id, dish)}
-                className="btn btn-primary mx-2"
+                className="btn  mx-2 outline-color "
               >
                 add
               </button>
             ) : (
-              <button onClick={handleDelete} className="btn btn-primary mx-2">
+              <button onClick={handleDelete} className="btn  mx-2 ">
                 Delete
               </button>
             )}

@@ -41,7 +41,7 @@ const SearchForm = ({}) => {
               />
               <div className="input-group-append">
                 <button
-                  className="btn btn-primary"
+                  className="btn orange"
                   type="submit"
                   disabled={isSubmitting}
                 >

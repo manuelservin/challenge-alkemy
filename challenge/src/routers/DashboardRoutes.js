@@ -8,13 +8,13 @@ import Search from "../screens/Search";
 
 const DashboardRoutes = () => {
   return (
-    <div className="container">
+    <>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="search" element={<Search />} />
         <Route path="search/:id" element={<Detail />} />
       </Routes>
-    </div>
+    </>
   );
 };
 
