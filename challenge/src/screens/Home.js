@@ -25,25 +25,22 @@ const Home = () => {
     Swal.fire({
       title: "<strong> Resume:</strong>",
       icon: "info",
-      html: ` <p> Price:  ${price} <p> 
-     <p> Ready In: ${time} <p> 
-     <p> Health Score:  ${healthScore} <p> 
+      html: ` <p> <b>Price</b>:  ${price} <p> 
+     <p> <b>Ready In
+     </b>: ${time} minutes<p> 
+     <p> <b>Health Score</b>:  ${healthScore} <p> 
      
      `,
       showCloseButton: true,
 
       focusConfirm: false,
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: "Thumbs up, great!",
     });
   };
 
   return (
-    <>
-      <h3>Menú</h3>
-      <hr />
+    <div className="container">
       <div className="row justify-content-center">
-        <Link className="btn btn-outline-info" to="/search">
+        <Link className="btn btn-lg outline-color mt-4" to="/search">
           Search a Dish
         </Link>
       </div>
@@ -54,11 +51,13 @@ const Home = () => {
       <DishList />
 
       {dishes && dishes.length !== 0 && (
-        <div className="alert alert-info" onClick={handleClick}>
-          <p className="text-align-center">Resume</p>
+        <div className="row justify-content-center mb-5 full ">
+          <button className="btn orange " onClick={handleClick}>
+            Resume
+          </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

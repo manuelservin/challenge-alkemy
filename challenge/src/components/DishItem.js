@@ -84,7 +84,10 @@ const DishItem = ({
                 add
               </button>
             ) : (
-              <button onClick={handleDelete} className="btn  mx-2 ">
+              <button
+                onClick={handleDelete}
+                className="btn  mx-2 outline-color "
+              >
                 Delete
               </button>
             )}

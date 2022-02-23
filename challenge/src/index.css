@@ -137,3 +137,18 @@ code {
   color: red;
   margin-top: 10px;
 }
+
+/* home page --> full button */
+
+.full {
+  width: 100%;
+
+  padding-left: 30px;
+}
+.full button {
+  width: 100%;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: var(--primary) !important;
+}
