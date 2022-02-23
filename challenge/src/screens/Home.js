@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import DishList from "../components/DishList";
 import { getAverage, getTotal } from "../helpers/helpers";
+import { logout } from "../redux/actions/auth";
 
 const Home = () => {
   const { dishes } = useSelector((state) => state.dishes);
@@ -19,7 +20,7 @@ const Home = () => {
       setHealthScore(getAverage(dishes, "healthScore"));
     }
   }, [dishes]);
-
+  const dispatch = useDispatch();
   const handleClick = () => {
     console.log("open");
     Swal.fire({
@@ -36,6 +37,10 @@ const Home = () => {
       focusConfirm: false,
     });
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch(logout());
+  };
 
   return (
     <div className="container">
@@ -43,6 +48,7 @@ const Home = () => {
         <Link className="btn btn-lg outline-color mt-4" to="/search">
           Search a Dish
         </Link>
+        <button onClick={handleLogout}>LogOut</button>
       </div>
       {dishes.length === 0 && (
         <div className="alert alert-info mt-5 ">The Menu is empty</div>

@@ -152,3 +152,42 @@ code {
 .swal2-styled.swal2-confirm {
   background-color: var(--primary) !important;
 }
+
+/*  STYLES FOR LOGIN FORM*/
+
+.form {
+  width: 50%;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 7px 7px 19px 4px rgba(0, 0, 0, 0.78);
+}
+
+.form-title {
+  padding-top: 20px;
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 45px;
+}
+.form-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-field {
+  width: 100%;
+}
+.form-field input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid grey;
+
+  height: 30px;
+  transition: border-bottom 0.3s ease;
+}
+
+.form-field input:focus {
+  border-bottom: 1px solid var(--primary);
+  outline: none;
+}

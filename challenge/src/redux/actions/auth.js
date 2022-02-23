@@ -28,4 +28,6 @@ export const login = (token) => ({
     token,
   },
 });
-export const logout = () => localStorage.removeItem("token");
+export const logout = () => ({
+  type: types.logout,
+});
