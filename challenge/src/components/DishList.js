@@ -6,7 +6,7 @@ const DishList = () => {
   const { dishes } = useSelector((state) => state.dishes);
 
   return (
-    <div className=" my-5 row row-cols-1 list">
+    <div className=" my-5 row row-cols-1 ">
       {dishes &&
         dishes.map((dish) => (
           <div className="big">

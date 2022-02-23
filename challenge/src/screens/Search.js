@@ -21,11 +21,16 @@ const Search = () => {
       </div>
 
       {loading ? (
-        <div className="row justify-content-center">
-          <h3 className="text-align-center">Loading....</h3>
+        <div
+          style={{ width: "100%", height: "100%" }}
+          className="row justify-content-center mt-5"
+        >
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       ) : (
-        <div className="my-5 row  list justify-content-center">
+        <div className="my-5 row  list ">
           {lastSearch &&
             lastSearch.map((dish) => (
               <div className="small ">

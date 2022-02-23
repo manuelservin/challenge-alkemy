@@ -36,6 +36,9 @@ code {
 .list {
   display: flex;
   gap: 1em;
+  width: 100%;
+
+  justify-content: center;
 }
 
 .recipe {
@@ -44,7 +47,6 @@ code {
   overflow: hidden;
 }
 .recipe-content {
-  border: 1px solid red;
   padding: 10px 18px 10px 18px;
   flex: 4 1 40ch;
   min-height: 240;
@@ -63,7 +65,6 @@ code {
 }
 
 .recipe-title {
-  border: 1px solid red;
   margin: 0;
   width: 100%;
   min-height: 75px;
@@ -77,8 +78,22 @@ code {
 
 .big {
   width: clamp(320px, 65%, 65%);
-  padding: 24px;
+  padding: 10px 30px;
 }
 .small {
-  width: clamp(200px, 60%, 315px);
+  width: clamp(250px, 80%, 350px);
+}
+
+/* SearchForm*/
+
+.form {
+  width: 65%;
+  min-width: 290px;
+
+  margin: 20px auto 10px auto;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
 }
