@@ -6,3 +6,7 @@ export const searchUpdate = (dishes) => {
     payload: dishes,
   };
 };
+
+export const resetSearch = () => ({
+  type: types.searchReset,
+});

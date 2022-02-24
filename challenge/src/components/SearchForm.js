@@ -22,6 +22,12 @@ const SearchForm = ({}) => {
           dispatch(startLoading());
           searchDish(values)
             .then((res) => {
+              console.log(res);
+              if (res.length === 0) {
+                dispatch(finishLoading());
+                return Swal.fire("Error!", "The dish does not exist", "error");
+              }
+
               dispatch(searchUpdate(res));
               dispatch(finishLoading());
             })

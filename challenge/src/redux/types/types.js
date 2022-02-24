@@ -10,4 +10,5 @@ export const types = {
   dishesDelete: "[Dishes] delete Dish",
   dishesReset: "[Dishes] reset",
   searchUpdate: "[Search] update search",
+  searchReset: "[Search] reset search",
 };

@@ -10,6 +10,8 @@ export const searchReducer = (state = initialState, action) => {
       return {
         lastSearch: action.payload,
       };
+    case types.searchReset:
+      return initialState;
 
     default:
       return state;
