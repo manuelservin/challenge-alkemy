@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDishById } from "../helpers/helpers";
-import { stripHtml } from "string-strip-html";
+// import { stripHtml } from "string-strip-html";
 import { useDispatch, useSelector } from "react-redux";
 import { finishLoading, startLoading } from "../redux/actions/ui";
 const Detail = () => {
@@ -9,7 +9,8 @@ const Detail = () => {
   const dispatch = useDispatch();
   const [dish, setDish] = useState();
   const { loading } = useSelector((state) => state.ui);
-  const content = dish && stripHtml(dish.summary).result;
+  // const content = dish && stripHtml(dish.summary).result;
+  const content = dish && dish.summary;
 
   const navigate = useNavigate();
   const handleReturn = () => {
