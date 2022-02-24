@@ -188,8 +188,9 @@ code {
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 7px 7px 19px 4px rgba(0, 0, 0, 0.78);
-  width: 55vw;
+  width: 40vw;
   max-width: 500px;
+  height: 40vh;
 }
 
 .form-title {
@@ -205,7 +206,7 @@ code {
 }
 
 .form-field {
-  width: 100%;
+  width: 70%;
 }
 .form-field input {
   width: 100%;

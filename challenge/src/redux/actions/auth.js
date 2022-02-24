@@ -21,6 +21,12 @@ export const startLogin = (data) => {
       });
   };
 };
+export const loginAsGuest = () => ({
+  type: types.loginAsGuest,
+  payload: {
+    token: "guest",
+  },
+});
 
 export const login = (token) => ({
   type: types.login,

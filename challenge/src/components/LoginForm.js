@@ -1,12 +1,16 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { startLogin } from "../redux/actions/auth";
+import { loginAsGuest, startLogin } from "../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.ui);
+
+  const handleLoginAsGuest = () => {
+    dispatch(loginAsGuest());
+  };
   return (
     <div>
       <Formik
@@ -30,40 +34,51 @@ const LoginForm = () => {
                 <span class="visually-hidden"></span>
               </div>
             ) : (
-              <Form className="form col">
-                <h5 className="form-title">Login</h5>
-                <div className="form-content">
-                  <div className="form-field mb-2">
-                    <Field name="email" type="text" placeHolder="Email" />
-                    <ErrorMessage
-                      name="email"
-                      className="error"
-                      component="div"
-                    />
-                  </div>
-                  <div className="form-field mt-3">
-                    <Field
-                      name="password"
-                      type="password"
-                      placeHolder="Password.."
-                    />
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="error"
-                    />
-                  </div>
+              <div className="form">
+                <Form className="col">
+                  <h5 className="form-title">Login</h5>
+                  <div className="form-content">
+                    <div className="form-field mb-2">
+                      <Field name="email" type="text" placeHolder="Email" />
+                      <ErrorMessage
+                        name="email"
+                        className="error"
+                        component="div"
+                      />
+                    </div>
+                    <div className="form-field mt-3">
+                      <Field
+                        name="password"
+                        type="password"
+                        placeHolder="Password.."
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component="div"
+                        className="error"
+                      />
+                    </div>
 
+                    <button
+                      type="submit"
+                      style={{ width: "70%" }}
+                      className=" btn orange mt-4 mb-3"
+                      disabled={isSubmitting}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </Form>
+                <div className="row justify-content-center">
                   <button
-                    type="submit"
-                    style={{ width: "100%" }}
-                    className=" btn orange mt-3 mb-5"
-                    disabled={isSubmitting}
+                    onClick={handleLoginAsGuest}
+                    style={{ width: "60%" }}
+                    className=" btn outline-color mb-5"
                   >
-                    Submit
+                    Enter as a guest
                   </button>
                 </div>
-              </Form>
+              </div>
             )}
           </>
         )}
