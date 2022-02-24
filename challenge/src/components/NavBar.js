@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar className="nav" bg="dark" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="link">

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { searchUpdate } from "../redux/actions/search";
 import { finishLoading, startLoading } from "../redux/actions/ui";
 
-const SearchForm = ({}) => {
+const SearchForm = () => {
   const dispatch = useDispatch();
   return (
     <>

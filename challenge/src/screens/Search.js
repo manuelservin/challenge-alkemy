@@ -16,7 +16,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center m-0">
         <SearchForm />
       </div>
 
@@ -30,7 +30,7 @@ const Search = () => {
           </div>
         </div>
       ) : (
-        <div className="my-5 row  list ">
+        <div className="my-5  list ">
           {lastSearch &&
             lastSearch.map((dish) => (
               <div className="small ">
