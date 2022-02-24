@@ -12,16 +12,15 @@ const SearchForm = ({}) => {
   return (
     <>
       <Formik
-        initialValues={{ dish: "" }}
+        initialValues={{ dish: "", vegan: false }}
         validationSchema={Yup.object({
           dish: Yup.string()
             .min(3, "it should have at least 2 characters")
             .required("it should have at least 2 characters"),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          const { dish } = values;
           dispatch(startLoading());
-          searchDish(dish)
+          searchDish(values)
             .then((res) => {
               dispatch(searchUpdate(res));
               dispatch(finishLoading());
@@ -49,6 +48,10 @@ const SearchForm = ({}) => {
                 </button>
               </div>
             </div>
+            <label className="checkBox">
+              <Field name="vegan" type="checkbox" />
+              Vegan
+            </label>
             <ErrorMessage className="error" name="dish" component="div" />
           </Form>
         )}

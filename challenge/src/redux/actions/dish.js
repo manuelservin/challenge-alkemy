@@ -45,3 +45,5 @@ export const validateDish = (id, dish) => {
     }
   };
 };
+
+export const resetDishes = () => ({ type: types.dishesReset });

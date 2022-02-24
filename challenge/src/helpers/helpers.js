@@ -1,9 +1,10 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { config } from "../config/config";
 
 export const getDishById = async (id) => {
   const response = await axios.get(
-    `${process.env.REACT_APP_BASE_URL}/recipes/${id}/information?includeNutrition=false&apiKey=${process.env.REACT_APP_API_KEY}`
+    `${config.baseUrl}/recipes/${id}/information?includeNutrition=false&apiKey=${config.apiKey}`
   );
   return response.data;
 };
@@ -26,15 +27,28 @@ export const getAverage = (array, value) => {
   return total.toFixed();
 };
 
-export const searchDish = async (dish) => {
+export const searchDish = async (values) => {
+  console.log(values);
+  const { dish, vegan } = values;
+  if (vegan) {
+    const response = await axios
+      .get(
+        `${config.baseUrl}/recipes/complexSearch?query=${dish}&addRecipeInformation=true&diet=vegan&apiKey=${config.apiKey}`
+      )
+      .then((res) => {
+        return res.data.results;
+      })
+      .catch((err) => Swal.fire("Error!", err, "error"));
+    return response;
+  }
   const response = await axios
     .get(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${dish}&addRecipeInformation=true&apiKey=${process.env.REACT_APP_API_KEY}`
+      `${config.baseUrl}/recipes/complexSearch?query=${dish}&addRecipeInformation=true&apiKey=${config.apiKey}`
     )
     .then((res) => {
       return res.data.results;
     })
     .catch((err) => Swal.fire("Error!", err, "error"));
-  console.log(response);
+
   return response;
 };

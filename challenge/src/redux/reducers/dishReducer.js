@@ -26,6 +26,8 @@ export const dishReducer = (state = initialState, action) => {
         ...state,
         dishes: state.dishes.filter((dish) => dish.id !== action.payload),
       };
+    case types.dishesReset:
+      return initialState;
 
     default:
       return state;

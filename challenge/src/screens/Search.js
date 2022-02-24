@@ -31,7 +31,7 @@ const Search = () => {
         </div>
       ) : (
         <div className="my-5 row  list ">
-          {lastSearch &&
+          {lastSearch && lastSearch.length > 0 ? (
             lastSearch.map((dish) => (
               <div className="small ">
                 <DishItem
@@ -41,7 +41,10 @@ const Search = () => {
                   dish={dish}
                 />
               </div>
-            ))}
+            ))
+          ) : (
+            <h3> The dish doesn't exist</h3>
+          )}
         </div>
       )}
     </>

@@ -133,7 +133,15 @@ code {
 
   margin: 20px auto 10px auto;
 }
+.checkBox {
+  
+  margin-top: 10px;
+  font-size: 1.2em;
+}
 
+.checkBox input[type="checkbox"] {
+  margin-right: 6px;
+}
 .error {
   color: red;
   margin-top: 10px;

@@ -8,5 +8,6 @@ export const types = {
 
   dishesAdd: "[Dishes] new Dish",
   dishesDelete: "[Dishes] delete Dish",
+  dishesReset: "[Dishes] reset",
   searchUpdate: "[Search] update search",
 };

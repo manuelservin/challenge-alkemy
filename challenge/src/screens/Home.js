@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import DishList from "../components/DishList";
 import { getAverage, getTotal } from "../helpers/helpers";
 import { logout } from "../redux/actions/auth";
+import { resetDishes } from "../redux/actions/dish";
 
 const Home = () => {
   const { dishes } = useSelector((state) => state.dishes);
@@ -40,6 +41,7 @@ const Home = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     dispatch(logout());
+    dispatch(resetDishes());
   };
 
   return (
